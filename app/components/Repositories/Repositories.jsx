@@ -7,6 +7,8 @@ import { FaCodeFork, FaRegStar } from "react-icons/fa6";
 const Repositories = () => {
   const { username } = useParams();
   const [repos, setRepos] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const reposPerPage = 6;
 
   useEffect(() => {
     if (username) {
@@ -21,27 +23,39 @@ const Repositories = () => {
     }
   }, [username]);
 
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const indexOfLastRepo = currentPage * reposPerPage;
+  const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
+  const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
+
   return (
-    <div className="max-w-[896px] w-full space-y-5">
-      {repos.map((repo) => (
+    <div className="max-w-[896px] mt-5 w-full space-y-5">
+      {currentRepos.map((repo) => (
         <div
           key={repo.id}
           className="p-4 border min-h-[176px] flex-col flex justify-between border-[#f3f1f5] bg-[#444] rounded-lg"
         >
           <div>
             <h3
-              className="text-2xl text-[#f3f1f5] font-bold cursor-pointer hover:underline"
+              className="text-2xl text-wrap text-[#f3f1f5] font-bold cursor-pointer hover:underline"
               onClick={() => window.open(repo.html_url, "_blank")}
             >
               {repo.name}
             </h3>
             {repo.description && (
-              <p className="text-[#c0c0c0] text-base leading-6">
+              <p className="text-[#c0c0c0] text-wrap text-base leading-6">
                 {repo.description}
               </p>
             )}
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <div className="flex items-center gap-2">
               <p className=" h-3 w-3 rounded-full bg-[#E34C26]"></p>
               <span className="text-[#f3f1f5]">{repo.language || "N/A"}</span>
@@ -61,6 +75,31 @@ const Repositories = () => {
           </div>
         </div>
       ))}
+
+      <div className="flex justify-center gap-5 mt-4">
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className={`w-[70px] flex items-center justify-center h-8 rounded-lg text-sm ${
+            currentPage === 1
+              ? "cursor-not-allowed text-[#c0c0c0]"
+              : "hover:border text-[#4493f8]"
+          }`}
+        >
+          Previous
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={indexOfLastRepo >= repos.length}
+          className={`w-[70px] flex items-center justify-center h-8  text-sm rounded-lg ${
+            indexOfLastRepo >= repos.length
+              ? " cursor-not-allowed text-[#c0c0c0]"
+              : "hover:border text-[#4493f8]"
+          }`}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

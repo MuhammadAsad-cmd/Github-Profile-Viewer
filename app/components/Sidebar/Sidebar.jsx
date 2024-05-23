@@ -26,7 +26,7 @@ const Sidebar = () => {
   }
   return (
     <>
-      <div className="w-full lg:max-w-[296px]">
+      <div className="w-full md:max-w-[296px] mr-5">
         <div>
           <Image
             width={296}
