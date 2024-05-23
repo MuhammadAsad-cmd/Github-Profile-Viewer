@@ -22,7 +22,7 @@ const Repositories = () => {
   }, [username]);
 
   return (
-    <div className="grid max-w-[896px] gap-5 grid-cols-1">
+    <div className="max-w-[896px] w-full space-y-5">
       {repos.map((repo) => (
         <div
           key={repo.id}

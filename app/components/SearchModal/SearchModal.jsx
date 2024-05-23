@@ -87,7 +87,7 @@ const SearchModal = () => {
             type="search"
             id="default-search"
             readOnly
-            className="w-full p-4 px-10 h-10 text-sm text-[#f3f1f5] placeholder:text-[#f3f1f5] border bg-[#2f2f2f] border-[#f3f1f5] rounded-lg outline-none"
+            className="lg:w-full w-5 p-4 lg:px-10 h-10 cursor-pointer text-sm text-[#f3f1f5] placeholder:text-[#f3f1f5] border bg-[#2f2f2f] border-[#f3f1f5] rounded-lg outline-none"
             placeholder="Enter GitHub Username"
           />
         </div>

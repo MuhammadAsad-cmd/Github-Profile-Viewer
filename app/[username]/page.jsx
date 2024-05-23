@@ -31,11 +31,11 @@ const ProfilePage = () => {
         <p className="text-base font-medium leading-6 text-[#f3f1f5]">
           Popular repositories
         </p>
-        <div className="grid mt-3 grid-cols-2 gap-5">
-          {repos.slice(12, 18).map((repo) => (
+        <div className="grid mt-3 grid-cols-1 md:grid-cols-2 gap-5">
+          {repos.slice(0, 6).map((repo) => (
             <div
               key={repo.id}
-              className="p-4 border h-full flex-col flex justify-between w-[440px] border-[#f3f1f5] bg-[#444] rounded-lg"
+              className="p-4 border h-full flex-col flex justify-between w-full lg:max-w-[440px] border-[#f3f1f5] bg-[#444] rounded-lg"
             >
               <div className="flex items-center justify-between">
                 <h3
