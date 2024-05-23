@@ -35,16 +35,16 @@ const ProfilePage = () => {
           {repos.slice(0, 6).map((repo) => (
             <div
               key={repo.id}
-              className="p-4 border h-full flex-col flex justify-between text-wrap w-full lg:max-w-[440px] border-[#f3f1f5] bg-[#444] rounded-lg"
+              className="p-4 border h-full flex-col flex gap-1 justify-between text-wrap w-full lg:max-w-[440px] border-[#f3f1f5] bg-[#444] rounded-lg"
             >
               <div className="flex items-center justify-between">
                 <h3
-                  className="text-2xl text-[#f3f1f5] font-bold cursor-pointer hover:underline"
+                  className="text-2xl text-[#f3f1f5] text-wrap font-bold cursor-pointer hover:underline"
                   onClick={() => window.open(repo.html_url, "_blank")}
                 >
                   {repo.name}
                 </h3>
-                <p className="text-[#f3f1f5] h-5 w-12 text-xs font-medium flex items-center justify-center border rounded-3xl">
+                <p className="text-[#f3f1f5] h-5 w-14 text-xs font-medium flex items-center justify-center border rounded-3xl">
                   {repo.private ? "Private" : "Public"}
                 </p>
               </div>
