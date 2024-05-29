@@ -2,8 +2,7 @@
 import Image from "next/image";
 import SearchModal from "../SearchModal/SearchModal";
 import Link from "next/link";
-import { useParams, usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useParams, usePathname } from "next/navigation";
 
 const Header = () => {
   const { username } = useParams();
