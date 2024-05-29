@@ -37,9 +37,9 @@ const ProfilePage = () => {
               key={repo.id}
               className="p-4 border h-full flex-col flex gap-1 justify-between text-wrap w-full lg:max-w-[440px] border-[#f3f1f5] bg-[#444] rounded-lg"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between flex-wrap">
                 <h3
-                  className="text-2xl text-[#f3f1f5] text-wrap font-bold cursor-pointer hover:underline"
+                  className="text-2xl text-[#f3f1f5] text-ellipsis overflow-hidden font-bold cursor-pointer hover:underline"
                   onClick={() => window.open(repo.html_url, "_blank")}
                 >
                   {repo.name}
